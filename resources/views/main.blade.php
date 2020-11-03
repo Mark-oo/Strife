@@ -6,9 +6,8 @@
     @include('includes._nav')
 
 
-
+@include('includes._messages')
       <div class="row">
-      @include('includes._messages')
       @include('includes._left_bar')
             @yield('content')
       @include('includes._right_bar')

@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Group;
+use App\Chat;
 use Session;
 
 class ChatController extends Controller
@@ -42,12 +42,13 @@ class ChatController extends Controller
           'rules'=>'required|min:3|max:255',
         ]);
 
-        $group=new Group;
-        $group->name=$request->name;
-        $group->description=$request->description;
-        $group->rules=$request->rules;
+        $chat=new Chat;
+        $chat->name=$request->name;
+        $chat->description=$request->description;
+        $chat->rules=$request->rules;
+        $chat->capacity=3;
 
-        $group->save();
+        $chat->save();
 
         Session::flash('success','Juhuuuuu');
         return redirect()->route('pages.index');
