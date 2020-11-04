@@ -15,8 +15,8 @@
 
 
   <hr>
-    @include('includes._javascript')
-    @yield('scripts')
   </body>
   @include('includes._footer')
+  @include('includes._javascript')
+  @yield('scripts')
 </html>

@@ -18,24 +18,26 @@
       <li class="nav-item {{Request::is('/')?'active':''}}">
         <a class="nav-link" href="#">Blocked <span class="sr-only">(current)</span></a>
       </li>
-      <li class="nav-item {{Request::is('/')?'active':''}}">
-        <a class="nav-link" href="/login">login <span class="sr-only">(current)</span></a>
-      </li>
+      @if(Auth::check())
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Username
+           {{Auth::user()->handle}}
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="{{url('/login')}}">Login</a>
-          <a class="dropdown-item" href="{{url('/register')}}">Register</a>
+          <a class="dropdown-item" href="{{url('/accaunt')}}">Myaccount</a>
+          <a class="dropdown-item" href="{{url('/friends')}}">Friends</a>
           <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="#">Something else here</a>
+          <a class="dropdown-item" href="{{url('/logout')}}">Logout</a>
         </div>
       </li>
     </ul>
-    <form class="form-inline my-2 my-lg-0">
-      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-      <button class="btn btn-outline-primary my-2 my-sm-0" type="submit">Search</button>
-    </form>
+  @elseif(Request::is('login'))
+   @else()
+     <ul class="navbar-nav  ml-md-auto">
+       <li class="nav-item"><a class="btn btn-outline-dark" href="/login">Login</a></li>
+       <li class="nav-item"><a class="btn btn-outline-dark" href="/register">Register</a></li>
+      </ul>
+     </div>
+   @endif()
   </div>
 </nav>

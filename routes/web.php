@@ -17,10 +17,13 @@ Route::group(['middleware'=>['web']],function(){
   Route::post('/create','ChatController@store')->name('group.store');
   Route::get('/create',['uses'=>'ChatController@create','as'=>'chats.create']);
 // authentication
-Route::get('register',['uses'=>'Auth\RegisterController@showRegistrationForm','as'=>'auth.register']);
+Auth::routes();
+Route::get('/logout','Auth\LoginController@logout');
+Route::post('/login','Auth\LoginController@login');
 Route::get('/login','Auth\LoginController@showloginForm');
 // Auth::routes();
 // main page
-Route::get('/',['uses'=>'PagesController@getIndexPage','as'=>'pages.index']);
+Route::get('/',['uses'=>'PagesController@getWelcomePage','as'=>'pages.welcome']);
+Route::get('/@me',['uses'=>'PagesController@getIndexPage','as'=>'pages.index']);
 
 });
