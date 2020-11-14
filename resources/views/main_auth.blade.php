@@ -5,15 +5,13 @@
   <body>
     @include('includes._nav')
 
-<div class="container">
 
 
-      <div class="row">
+
+      <div>
       @include('includes._messages')
-
-            @yield('content')
       </div>
-</div>
+        @yield('content')
 
   <hr>
     @include('includes._javascript')

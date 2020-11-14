@@ -19,6 +19,8 @@ class CreateChatLinesTable extends Migration
             // $table->integer('user_id')->unsigned();
             $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('chat_id');
+            $table->text('line_text');
+            $table->timestamp('created_at');
         });
         Schema::table('chat_lines',function($table){
             $table->foreign('user_id')->unsigned()->references('id')
