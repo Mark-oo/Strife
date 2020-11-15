@@ -104,7 +104,23 @@ class ChatController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request,[
+          'name'=>'required|min:3|max:255',
+          'key'=>'required|min:4|max:20',
+          'description'=>'required|min:3|max:255',
+          'rules'=>'required|min:3|max:255',
+        ]);
+        $chat=Chat::find($id);
+        $chat->name=$request->name;
+        $chat->description=$request->description;
+        $chat->rules=$request->rules;
+        $chat->key=$request->key;
+
+        $chat->save();
+        $chat->users()->sync($request->users,false);
+
+        Session::flash('success','Wuhuuuuu');
+        return redirect()->route('chats.show',$chat->id);
     }
 
     /**
@@ -115,6 +131,11 @@ class ChatController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $chat=Chat::find($id);
+        $chat->users()->detach();
+        $chat->delete();
+
+        Session::flash('success','Nooooooo');
+        return redirect()->route('pages.index');
     }
 }

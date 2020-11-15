@@ -12,6 +12,8 @@
       {{Form::model($chat,['route'=>['chats.update',$chat->id],'method'=>'PUT'])}}
       {{Form::label('name','Name:')}}
       {{Form::text('name',null,['class'=>'form-control'])}}
+      {{Form::label('key','Key:')}}
+      {{Form::text('key',null,['class'=>'form-control'])}}
       {{Form::label('description','Description:')}}
       {{Form::textarea('description',null,['class'=>'form-control','rows'=>"4", 'cols'=>"50"])}}
       {{Form::label('rules','Rules:')}}
@@ -21,16 +23,13 @@
                                         'multiple'=>'multiple'
                                        ])
       }}
-      {{-- <select class="form-control js-example-basic-multiple" name="u[]" multiple>
-        @foreach($u as $user)
-
-        <option value="{{$user->id}}">{{$user->name}}</option>
-        @endforeach
-      </select> --}}
 
       {{Form::submit('Change',['class'=>'brn btn-outline-dark form-control','style'=>'margin-top:5px;'])}}
       {!!Html::linkRoute('chats.show','Cancel',[$chat->id],['class'=>'btn btn-outline-dark btn-block','style'=>'margin-top:5px;'])!!}
       {{Form::close()}}
+      {!!Form::open(['route'=>['chats.destroy',$chat->id],'method'=>'DELETE'])!!}
+      {!!Form::submit('Delete',['class'=>'btn btn-danger btn-block'])!!}
+      {!!Form::close()!!}
 
     </div>
   </div>

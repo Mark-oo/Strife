@@ -1,5 +1,5 @@
 @extends('main_auth')
-@section('title',"| ")
+@section('title',"| $chat->name")
 @section('content')
 
 
