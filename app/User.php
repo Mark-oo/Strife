@@ -36,10 +36,24 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
     public function chat(){
       return $this->belongsToMany('App\Chat');
     }
+
     public function message(){
       return $this->hasMany('App\Message');
     }
+
+    public function friends(){
+	  	return $this->belongsToMany('App\User', 'friends_users', 'user_id', 'friend_id');
+  	}
+    
+    public function addFriend(User $user){
+		  $this->friends()->attach($user->id);
+	  }
+
+  	public function removeFriend(User $user){
+	  	$this->friends()->detach($user->id);
+  	}
 }
