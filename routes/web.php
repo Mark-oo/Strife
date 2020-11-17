@@ -13,6 +13,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 Route::group(['middleware'=>['web']],function(){
+  // Friends
+  Route::get('/friends', 'FriendController@getIndex')->name('friends.index');
   // chat.messages
   Route::post('chats/{chat_id}',['uses'=>'MessageController@store','as'=>'messages.store']);
   // chat create
@@ -23,12 +25,7 @@ Route::group(['middleware'=>['web']],function(){
   Route::get('/logout','Auth\LoginController@logout');
   Route::post('/login','Auth\LoginController@login');
   Route::get('/login','Auth\LoginController@showLoginForm');
-  // Route::get('/logout','Auth\LoginController@logout');
-  // Route::post('/login','Auth\LoginController@login');
-  // Route::get('/login','Auth\LoginController@showloginForm');
-  // Auth::routes();
   // main page
-  // Route::get('/{name}',['uses'=>'PagesController@getChat','as'=>'pages.single']);
   Route::get('/',['uses'=>'PagesController@getWelcomePage','as'=>'pages.welcome']);
   Route::get('/@me',['uses'=>'PagesController@getIndexPage','as'=>'pages.index']);
 
