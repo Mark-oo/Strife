@@ -13,7 +13,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 Route::group(['middleware'=>['web']],function(){
+  // search
+  Route::get('/search','SearchController@search');
   // Friends
+  Route::get('/friends/{id}/add',['FriendController@addFriend']);
   Route::get('/friends', 'FriendController@getIndex')->name('friends.index');
   // chat.messages
   Route::post('chats/{chat_id}',['uses'=>'MessageController@store','as'=>'messages.store']);

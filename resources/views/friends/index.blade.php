@@ -23,8 +23,9 @@
       </tbody>
     </table>
     </div>
-    <div class="col">
+    <div id="app" class="col">
       <p>Add Friends</p>
+      <search></search>
       <table class="table-stripped table-bordered" style="width:100%;">
         <thead>
           <tr>
@@ -45,4 +46,6 @@
     </div>
   </div>
 </div>
+<script src="{{asset('js/app.js')}}"></script>
+
 @endsection
