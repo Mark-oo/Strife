@@ -13,10 +13,12 @@
     </tr>
   </thead>
   <tbody>
+    @foreach($user->friends as $friend)
     <tr>
-      <td>1</th>
-      <td>Mark</td>
+      <td><a href="{{route('friends.show',$friend->id)}}">{{$friend->handle}}<a></td>
+
     </tr>
+  @endforeach
   </tbody>
 </table>
 </div>

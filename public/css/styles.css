@@ -47,12 +47,22 @@
   float: left;
 }
 .message{
-  margin-top: 60px;
-  margin-bottom: 60px;
+  margin-top: 20px;
+  margin-bottom: 40px;
+}
+.message-l-side{
+ margin-left: 500px;
 }
 .info{
   float: left;
     margin-left: 15px;
+}
+.info2{
+  float: right;
+}
+.info-spaceing{
+
+  margin-bottom: 10px;
 }
 .info>h4{
   margin:5px;
@@ -63,7 +73,12 @@
   font-size: 16px;
   line-height: 1.3em;
 }
+.handle{
+  font-size: 15px;
+  color:#4d4d4d;
+}
 .time{
+  margin-bottom: 0px;
   font-size: 11px;
   font-style: italic;
   color: #aaa;
@@ -94,4 +109,25 @@
     color: #00bfb6;
     font-family: arial;
     position: relative;
+}
+
+.speech-bubble {
+	position: relative;
+	background: #007ffe;
+	border-radius: .4em;
+}
+
+.speech-bubble:after {
+	content: '';
+	position: absolute;
+	left: 0;
+	top: 50%;
+	width: 0;
+	height: 0;
+	border: 2px solid transparent;
+	border-right-color: #007ffe;
+	border-left: 0;
+	border-bottom: 0;
+	margin-top: -1px;
+	margin-left: -2px;
 }

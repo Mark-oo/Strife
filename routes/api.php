@@ -14,6 +14,5 @@ use Illuminate\Support\Facades\Route;
 |
 */
 Route::middleware('auth:api')->get('/user', function (Request $request) {
-// Route::get('/search','SearchController@search')->name('search.index');
     return $request->user();
 });

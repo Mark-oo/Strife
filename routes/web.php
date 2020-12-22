@@ -16,7 +16,9 @@ Route::group(['middleware'=>['web']],function(){
   // search
   Route::get('/search','SearchController@search');
   // Friends
-  Route::get('/friends/{id}/add',['FriendController@addFriend']);
+  Route::get('/friends/show/{id}',['uses'=>'FriendController@show','as'=>'friends.show']);
+  Route::post('/friends/add','FriendController@add');
+  Route::post('/friends/d','FriendController@delete');
   Route::get('/friends', 'FriendController@getIndex')->name('friends.index');
   // chat.messages
   Route::post('chats/{chat_id}',['uses'=>'MessageController@store','as'=>'messages.store']);

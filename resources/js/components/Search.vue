@@ -16,25 +16,29 @@
       data(){
         return{
           handle:'',
-          message:'pisa'
+          message:''
         }
       },
       methods:{
         search:function(){
-         var app=this
+         var app=this;
          axios
          .get('/search')
          .then(function(res){
            if(app.handle==''){
-             console.log("prazno polje");
+              app.message ="prazno polje";
+
            }
-           else if(JSON.stringify(res.data).includes(app.hanlde)){
-             console.log("nema ti taj peder "+app.handle);
+           else if(JSON.stringify(res.data).includes(app.handle)){
+             // console.log(JSON.stringify(res.data).includes(app.hanlde));
+             // console.log(app.handle);
+             app.message="Evo ga taj tvoj peder "+app.handle;
            }else{
-             console.log("Evo ga taj tvoj peder "+app.handle);
+             app.message="Nema taj tvoj peder "+app.handle;
+              console.log(JSON.stringify(res.data).includes(app.handle));
            }
          })
-         .catch(err =>alert("jed govna sit"))
+         .catch(err =>app.message.alert("jed govna sit"))
          }
         }
       }
