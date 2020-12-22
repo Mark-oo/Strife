@@ -23,6 +23,12 @@ class FriendController extends Controller
        return view('friends.index')->with('not_friends',$not_friends);
     }
 
+    public function getFriendShow($handle){
+      $friend=User::where('handle',$handle)->first();
+      // dd($friend->id);
+      return view('friends.show')->with('friend',$friend);
+    }
+
     public function getAddFriend($id){
       $user = User::find($id);
       Auth::user()->addFriend($user);

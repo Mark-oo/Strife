@@ -16,7 +16,7 @@ Route::group(['middleware'=>['web']],function(){
   // search
   Route::get('/search','SearchController@search');
   // Friends
-  Route::get('/friends/show/{id}',['uses'=>'FriendController@show','as'=>'friends.show']);
+  Route::get('/friends/show/{handle}',['uses'=>'FriendController@getFriendShow','as'=>'friends.show']);
   Route::post('/friends/add','FriendController@add');
   Route::post('/friends/d','FriendController@delete');
   Route::get('/friends', 'FriendController@getIndex')->name('friends.index');
