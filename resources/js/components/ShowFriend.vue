@@ -1,29 +1,33 @@
 <template>
-    <tr>
-      <td></td>
-      <td v-bind:text="handle">{{handle}}</td>
-      <td v-bind:text="name">{{name}}</td>
-      <td><button class="btn btn-sm btn-outline-primary" type="submit" v-on:click="del" name="button">Delete</button></td>
-    </tr>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>#</th><th>Handle</th><th>name</th><th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr v-for="friend in JSON.parse(friends)">
+        <td>{{friend.handle}}</td>
+        <td>{{friend.name}}</td>
+        <td><button class="btn btn-sm btn-outline-primary" type="submit" v-on:click="del(friend.id)" name="button">Delete</button></td>
+      </tr>
+    </tbody>
+  </table>
 </template>
 
 <script>
 export default {
-  props:['friend-id','friend-handle','friend-name'],
+  props:['friends'],
   data(){
     return{
-      handle:this.friendHandle,
-      name:this.friendName,
-      id_friend:this.friendId,
-      burek:"pisa"
     }
   },
     methods:{
-      del: function(){
-        var app=this
+      del: function(friend_id){
+        // var app=this
         axios.
          post('/friends/d',{
-           friend_id: app.id_friend
+           friend_id: friend_id
          })
       }
     }

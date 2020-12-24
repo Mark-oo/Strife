@@ -2035,21 +2035,24 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
-  props: ['friend-id', 'friend-handle', 'friend-name'],
+  props: ['friends'],
   data: function data() {
-    return {
-      handle: this.friendHandle,
-      name: this.friendName,
-      id_friend: this.friendId,
-      burek: "pisa"
-    };
+    return {};
   },
   methods: {
-    del: function del() {
-      var app = this;
+    del: function del(friend_id) {
+      // var app=this
       axios.post('/friends/d', {
-        friend_id: app.id_friend
+        friend_id: friend_id
       });
     }
   }
@@ -37790,27 +37793,53 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("tr", [
-    _c("td"),
+  return _c("table", { staticClass: "table table-striped" }, [
+    _vm._m(0),
     _vm._v(" "),
-    _c("td", { attrs: { text: _vm.handle } }, [_vm._v(_vm._s(_vm.handle))]),
-    _vm._v(" "),
-    _c("td", { attrs: { text: _vm.name } }, [_vm._v(_vm._s(_vm.name))]),
-    _vm._v(" "),
-    _c("td", [
-      _c(
-        "button",
-        {
-          staticClass: "btn btn-sm btn-outline-primary",
-          attrs: { type: "submit", name: "button" },
-          on: { click: _vm.del }
-        },
-        [_vm._v("Delete")]
-      )
-    ])
+    _c(
+      "tbody",
+      _vm._l(JSON.parse(_vm.friends), function(friend) {
+        return _c("tr", [
+          _c("td", [_vm._v(_vm._s(friend.handle))]),
+          _vm._v(" "),
+          _c("td", [_vm._v(_vm._s(friend.name))]),
+          _vm._v(" "),
+          _c("td", [
+            _c(
+              "button",
+              {
+                staticClass: "btn btn-sm btn-outline-primary",
+                attrs: { type: "submit", name: "button" },
+                on: {
+                  click: function($event) {
+                    return _vm.del(friend.id)
+                  }
+                }
+              },
+              [_vm._v("Delete")]
+            )
+          ])
+        ])
+      }),
+      0
+    )
   ])
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("thead", [
+      _c("tr", [
+        _c("th", [_vm._v("#")]),
+        _c("th", [_vm._v("Handle")]),
+        _c("th", [_vm._v("name")]),
+        _c("th")
+      ])
+    ])
+  }
+]
 render._withStripped = true
 
 

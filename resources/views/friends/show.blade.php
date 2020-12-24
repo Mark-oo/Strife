@@ -5,19 +5,26 @@
   <div class="text-center"><h3>{{$friend->handle}}</h3></div>
   <div class="row">
     <div class="col">
-    <table>
+    <table class="table table-bordered">
       <thead>
         <tr>
-          <th>Friends</th>
+          <th>{{$friend->handle}}'s Friends</th>
         </tr>
       </thead>
-      <tbody>
-        @foreach($friend->friends as $f)
-        <tr>
-          <td>{{$f->handle}}</td>
-        </tr>
-      @endforeach
-      </tbody>
+        @if($friend->friends->count() == null)
+          <tbody>
+           <tr><td>{{$friend->handle}} has no friends</td></tr>
+          </tbody>
+        @else
+          <tbody>
+            @foreach($friend->friends as $f)
+              <tr>
+                <td>{{$f->handle}}</td>
+              </tr>
+            @endforeach
+          </tbody>
+        @endif
+
     </table>
   </div>
   <div class="col">
