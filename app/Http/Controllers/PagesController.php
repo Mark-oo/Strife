@@ -22,10 +22,7 @@ class PagesController extends Controller
 
     $user=User::where('id',Auth::id())->first();
 
-
-    $chat=Chat::all();
-
-    return view('pages.index')->with('chat',$chat)->with('user',$user);
+    return view('pages.index')->with('user',$user);
   }
 
   public function getChat($id){
@@ -33,6 +30,13 @@ class PagesController extends Controller
     $chat=DB::table('chats')->where('id','=',$id)->get();
     $users=User::all();
      return view('pages.single')->with('chat',$chat)->with('users',$users);
+  }
+
+  public function getSelf($handle){
+    // dd($handle);
+    $user=User::where('handle',$handle)->first();
+    // dd($user)
+    return view('pages.self')->with('user',$user);
   }
 
 

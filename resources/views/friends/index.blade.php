@@ -2,7 +2,7 @@
 @section('title','| Friends')
 @section('content')
 <h3 class="text-center">Friends</h3>
-<div id="app"  class="container">
+<div  class="container">
   <div class="row">
     <div class="col">
     <p>Your Friends</p>
@@ -31,6 +31,6 @@
     </div>
   </div>
 </div>
-<script src="{{asset('js/app.js')}}"></script>
+{{-- <script src="{{asset('js/app.js')}}"></script> --}}
 
 @endsection

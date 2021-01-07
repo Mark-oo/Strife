@@ -23,6 +23,7 @@ Vue.component('example-component', require('./components/ExampleComponent.vue'))
 Vue.component('search', require('./components/Search.vue').default);
 Vue.component('show-friend', require('./components/ShowFriend.vue').default);
 Vue.component('add-friend', require('./components/AddFriend.vue').default);
+Vue.component('find-chat', require('./components/FindChat.vue').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to

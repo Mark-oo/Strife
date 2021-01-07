@@ -1,15 +1,15 @@
 <div class="col-md-2">
 
-<h3>My conversations</h3>
+<p>My chats</p>
 <table>
   <thead>
     <th>#</th><th>Name</th>
   </thead>
   <tbody>
-    @foreach($chat as $c)
+    @foreach($user->chat as $chat)
     <tr>
-      <td>{{$c->id}}</td>
-      <td><a href="{{route('chats.show',$c->id)}}">{{$c->name}}</a></td>
+      <td>{{$chat->id}}</td>
+      <td><a href="{{route('chats.show',$chat->id)}}">{{substr($chat->name,0,8)}}{{strlen($chat->name) > 8   ?"...":''}}</a></td>
     </tr>
     @endforeach
   </tbody>

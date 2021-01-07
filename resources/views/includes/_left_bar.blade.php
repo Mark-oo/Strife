@@ -1,5 +1,7 @@
-<div class="col-md-2">
-<h3>Find conversation</h3>
+<div  class="col-md-2">
+  <div  class="container">
+  </div>
+
 <div class="container">
   <a class="btn btn-sm btn-outline-dark" href="{{url('/chats/create')}}">Create group</a>
 </div>

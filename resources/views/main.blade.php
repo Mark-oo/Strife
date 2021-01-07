@@ -7,12 +7,13 @@
 
 
 @include('includes._messages')
+<div id="app" class="container">
       <div class="row">
       @include('includes._left_bar')
             @yield('content')
       @include('includes._right_bar')
       </div>
-
+</div>
 
   <hr>
   </body>

@@ -2,6 +2,7 @@
 @section('title',"| $friend->handle")
 @section('content')
 <div class="container">
+
   <div class="text-center"><h3>{{$friend->handle}}</h3></div>
   <div class="row">
     <div class="col">

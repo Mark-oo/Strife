@@ -1,3 +1,3 @@
 <footer class="text-center">
-  <p>&copy; Copyright Strife&trade; .All rights reserved.</p>
+  <p>&copy; Copyright Strife&trade;Co .All rights reserved.</p>
 </footer>

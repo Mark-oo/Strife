@@ -9,6 +9,7 @@ use Illuminate\Support\Collection;
 
 class FriendController extends Controller
 {
+
     public function getIndex(){
        // $friends=User::where('id','!=',Auth::user()->id)->get();
        // $collection=collect($friends);
@@ -29,11 +30,6 @@ class FriendController extends Controller
       return view('friends.show')->with('friend',$friend);
     }
 
-    public function getAddFriend($id){
-      $user = User::find($id);
-      Auth::user()->addFriend($user);
-      return Redirect::back();
-    }
 
     public function add(Request $request){
       $not_friends=User::where('id','!=',Auth::user()->id)->get();

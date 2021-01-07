@@ -24,7 +24,7 @@
            {{Auth::user()->handle}}
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="{{url('/account')}}">Myaccount</a>
+          <a class="dropdown-item" href="{{route('pages.self',Auth::user()->handle)}}">Myaccount</a>
           <a class="dropdown-item" href="{{url('/friends')}}">Friends</a>
           <div class="dropdown-divider"></div>
           <a class="dropdown-item" href="{{url('/logout')}}">Logout</a>
