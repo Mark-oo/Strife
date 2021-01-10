@@ -15,9 +15,9 @@ class CreateFriendRequestTable extends Migration
     {
         Schema::create('friend_request', function (Blueprint $table) {
             $table->id();
-            $table->integer('user_to')->index();
-            $table->string('user_from')->index();
-            $table->string('acted_user')->index();
+            $table->integer('first_user')->index();
+            $table->integer('second_user')->index();
+            $table->integer('acted_user')->index();
             $table->enum('status', ['pending', 'confirmed', 'blocked']);
             $table->timestamps();
         });

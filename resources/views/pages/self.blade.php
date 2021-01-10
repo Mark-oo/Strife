@@ -16,11 +16,17 @@
         </tr>
       </thead>
       <tbody>
+        @if($user->chats == null)
+          <tr>
+            <td>No Chats</td>
+          </tr>
+        @else
         @foreach($user->chat as $chat)
           <tr>
             <td></td><td>{{$chat->name}}</td>
           </tr>
         @endforeach
+        @endif
       </tbody>
     </table>
   </div>

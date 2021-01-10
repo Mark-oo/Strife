@@ -7,10 +7,10 @@
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav nm-left mr-auto">
       <li class="nav-item {{Request::is('/')?'active':''}}">
-        <a class="nav-link" href="#">Add Friend <span class="sr-only">(current)</span></a>
+        <a class="nav-link" href="{{url('/friends/find')}}">Find  <span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item {{Request::is('#')?"active":""}}">
-        <a class="nav-link" href="#">All <span class="sr-only">(current)</span></a>
+        <a class="nav-link" href="{{url('/friends')}}">Friends <span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item {{Request::is('/')?'active':''}}">
         <a class="nav-link" href="#">Pending <span class="sr-only">(current)</span></a>
@@ -25,7 +25,6 @@
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
           <a class="dropdown-item" href="{{route('pages.self',Auth::user()->handle)}}">Myaccount</a>
-          <a class="dropdown-item" href="{{url('/friends')}}">Friends</a>
           <div class="dropdown-divider"></div>
           <a class="dropdown-item" href="{{url('/logout')}}">Logout</a>
         </div>

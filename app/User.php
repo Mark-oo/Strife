@@ -48,7 +48,7 @@ class User extends Authenticatable
     public function friends(){
 	  	return $this->belongsToMany('App\User', 'friends_users', 'user_id', 'friend_id');
   	}
-    
+
     public function addFriend(User $user){
 		  $this->friends()->attach($user->id);
 	  }
@@ -56,4 +56,9 @@ class User extends Authenticatable
   	public function removeFriend(User $user){
 	  	$this->friends()->detach($user->id);
   	}
+
+    public function friend_requests(){
+	   return $this->hasMany(Friendship::class, 'second_user')
+	               ->where('status', 'pending');
+    }
 }

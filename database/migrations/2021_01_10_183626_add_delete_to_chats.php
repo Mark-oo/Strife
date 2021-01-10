@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateConversationTable extends Migration
+class AddDeleteToChats extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,10 @@ class CreateConversationTable extends Migration
      */
     public function up()
     {
-      Schema::create('conversation', function (Blueprint $table) {
-         $table->id();
-         $table->string('path',100);
-         $table->date('conv_date');
-       });    }
+        Schema::table('chats', function (Blueprint $table) {
+            $table->softDeletes('deleted_at', 0)->after('rules');
+        });
+    }
 
     /**
      * Reverse the migrations.
@@ -26,6 +25,8 @@ class CreateConversationTable extends Migration
      */
     public function down()
     {
-         Schema::dropIfExists('conversation');
+        Schema::table('chats', function (Blueprint $table) {
+            $table->dropColumn('deleted_at');
+        });
     }
 }

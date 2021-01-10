@@ -29,7 +29,7 @@ class CreateFriendsUsersTable extends Migration
             $table->foreign('friend_id')
                   ->unsigned()
                   ->references('id')
-                  ->on('friends')
+                  ->on('users')
                   ->onDelete('cascade');
         });
     }
