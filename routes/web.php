@@ -15,13 +15,20 @@ use Illuminate\Support\Facades\Route;
 Route::group(['middleware'=>['web']],function(){
   // search
   Route::get('/search','SearchController@search');
-  // Friends
+  // Friends stuff
+   // requests
+  Route::get('/requests/blocked','PagesController@blockedUserPage');
+  Route::post('/friends/block','RequestController@block');
+  Route::get('/requests/pending','PagesController@pendingFriendPage');
   Route::post('/friends/send','RequestController@request');
-  Route::get('/friends/find','FriendController@findFriendsPage');
+  Route::get('/friends/find','PagesController@findFriendsPage');
+  Route::post('/friends/add','RequestController@add');
+
+
   Route::get('/friends/show/{handle}',['uses'=>'FriendController@getFriendShow','as'=>'friends.show']);
-  Route::post('/friends/add','FriendController@add');
   Route::post('/friends/d','FriendController@delete');
   Route::get('/friends', 'FriendController@getIndex')->name('friends.index');
+
   // chat.messages
   Route::post('chats/{chat_id}',['uses'=>'MessageController@store','as'=>'messages.store']);
   // chat create

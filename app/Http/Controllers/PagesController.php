@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Chat;
 use App\User;
+use App\Friendship;
 
 class PagesController extends Controller
 {
@@ -37,6 +38,31 @@ class PagesController extends Controller
     $user=User::where('handle',$handle)->first();
     // dd($user)
     return view('pages.self')->with('user',$user);
+  }
+
+  public function findFriendsPage(){
+    $not_friends = User::where('id', '!=', Auth::user()->id);
+
+    if (Auth::user()->friends->count()) {
+     $not_friends->whereNotIn('id', Auth::user()->friends->modelKeys());
+     // dd($not_friends);
+    }
+    // dd($not_friends);
+    $not_friends = $not_friends->get();
+    return view('friends.find')->with('not_friends',$not_friends);
+  }
+
+  public function pendingFriendPage(){
+
+    $pending=Friendship::where('second_user',Auth::user()->id)->where('status','pending')->get();
+// dd($pending);
+    return view('requests.pending')->with('pending',$pending);#->with('$users',$user);
+  }
+
+  public function blockedUserPage(){
+    $blocked=Friendship::where('second_user',Auth::user()->id)->where('status','blocked')->get();
+
+    return view('requests.blocked')->with('blocked',$blocked);
   }
 
 

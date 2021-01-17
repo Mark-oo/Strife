@@ -57,8 +57,9 @@ class User extends Authenticatable
 	  	$this->friends()->detach($user->id);
   	}
 
-    public function friend_requests(){
-	   return $this->hasMany(Friendship::class, 'second_user')
-	               ->where('status', 'pending');
+    public function friendships(){
+      return $this->hasMany('App\Friendship');
+	   // return $this->hasMany(Friendships::class, 'second_user')
+	   //             ->where('status', 'pending');
     }
 }

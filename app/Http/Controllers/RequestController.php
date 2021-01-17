@@ -10,19 +10,48 @@ use Illuminate\Http\Request;
 
 class RequestController extends Controller
 {
+
+  public function add(Request $request){
+    $not_friends=User::where('id','!=',Auth::user()->id)->get();
+    foreach($not_friends as $not_friend){
+      if($not_friend->id==$request->friend_id){
+        Auth::user()->addFriend($not_friend);
+        break;
+      }
+    }
+  }
+
   public function request(Request $request){
     $this->validate($request,[
       'userOne'=>'required|integer',
       'userTwo'=>'required|integer'
     ]);
 
-    $friendship=new Friendship;
+    $friendships=new Friendship;
 
-    $friendship->first_usesr=$request->userOne;
-    $friendship->second_usesr=$request->userTwo;
-    $friendship->acted_user=$request->userOne;
-    $friendship->status='pending';
+    $friendships->first_user=$request->userOne;
+    $friendships->second_user=$request->userTwo;
+    $friendships->user_id=$request->userOne;
+    $friendships->status='pending';
+
+    $friendships->save();
+  }
+
+  public function accept(){
+
+  }
+
+  public function block(Request $request){
+    $this->validate($request,['user_id'=>'required|integer']);
+
+    $friendship=Friendship::where('first_user',$request->user_id)->where('second_user',Auth::id())->first();
+
+    $friendship->first_user=$request->user_id;
+    $friendship->second_user=Auth::id();
+    $friendship->user_id=Auth::id();
+    $friendship->status='blocked';
 
     $friendship->save();
   }
+
 }

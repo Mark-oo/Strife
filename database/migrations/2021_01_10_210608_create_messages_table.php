@@ -25,7 +25,7 @@ class CreateMessagesTable extends Migration
             $table->foreign('chat_id')->unsigned()->references('id')
                   ->on('chats')->onDelete('cascade');
         });
-        Schema::table('message',function($table){
+        Schema::table('messages',function($table){
             $table->foreign('user_id')->unsigned()->references('id')
                   ->on('users')->onDelete('cascade');
         });

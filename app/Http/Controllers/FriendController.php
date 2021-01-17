@@ -30,28 +30,8 @@ class FriendController extends Controller
       // dd($friend->id);
       return view('friends.show')->with('friend',$friend);
     }
-    public function findFriendsPage(){
-      $not_friends = User::where('id', '!=', Auth::user()->id);
-
-      if (Auth::user()->friends->count()) {
-       $not_friends->whereNotIn('id', Auth::user()->friends->modelKeys());
-       // dd($not_friends);
-      }
-      // dd($not_friends);
-      $not_friends = $not_friends->get();
-      return view('friends.find')->with('not_friends',$not_friends);
-    }
 
 
-    public function add(Request $request){
-      $not_friends=User::where('id','!=',Auth::user()->id)->get();
-      foreach($not_friends as $not_friend){
-        if($not_friend->id==$request->friend_id){
-          Auth::user()->addFriend($not_friend);
-          break;
-        }
-      }
-    }
 
 
     public function delete(Request $request){

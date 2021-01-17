@@ -12,7 +12,7 @@
       @foreach ($not_friends as $nt)
         <tr>
           <td>{{$nt->handle}}</td>
-          <td><send-request user-one="{{Auth::id()}}" user-two="{{$nt->id}}"></send-request></td>
+          <td><send-request data-toggle="button" user-one="{{Auth::id()}}" user-two="{{$nt->id}}"></send-request></td>
         </tr>
       @endforeach
     </tbody>

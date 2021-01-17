@@ -13,10 +13,10 @@
         <a class="nav-link" href="{{url('/friends')}}">Friends <span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item {{Request::is('/')?'active':''}}">
-        <a class="nav-link" href="#">Pending <span class="sr-only">(current)</span></a>
+        <a class="nav-link" href="{{url('requests/pending')}}">Pending <span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item {{Request::is('/')?'active':''}}">
-        <a class="nav-link" href="#">Blocked <span class="sr-only">(current)</span></a>
+        <a class="nav-link" href="{{url('requests/blocked')}}">Blocked <span class="sr-only">(current)</span></a>
       </li>
       @if(Auth::check())
       <li class="nav-item nm-left2 dropdown">
