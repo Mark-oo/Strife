@@ -10,6 +10,10 @@ use App\Message;
 class MessageController extends Controller
 {
 
+    public function __construct(){
+      $this->middleware('auth');
+    }
+
     public function store(Request $request,$chat_id){
       $this->validate($request,['message'=>'required|max:255'],);
       $chat=Chat::find($chat_id);

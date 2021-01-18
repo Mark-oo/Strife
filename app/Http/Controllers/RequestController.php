@@ -11,6 +11,10 @@ use Illuminate\Http\Request;
 class RequestController extends Controller
 {
 
+  public function __construct(){
+    $this->middleware('auth');
+  }
+
   public function add(Request $request){
     $not_friends=User::where('id','!=',Auth::user()->id)->get();
     foreach($not_friends as $not_friend){
@@ -48,10 +52,22 @@ class RequestController extends Controller
 
     $friendship->first_user=$request->user_id;
     $friendship->second_user=Auth::id();
-    $friendship->user_id=Auth::id();
+    $friendship->user_id=$request->user_id;
     $friendship->status='blocked';
 
     $friendship->save();
+  }
+
+  public function unblock(Request $request){
+    $this->validate($request,['user_id'=>'required|integer']);
+
+    $blocked=Friendship::where('first_user',$request->user_id)->where('second_user',Auth::id())->where('status','blocked')->first();
+    $blocked->delete();
+
+    $friend=User::where('id',$request->user_id)->first();
+
+    Auth::user()->addFriend($friend);
+
   }
 
 }

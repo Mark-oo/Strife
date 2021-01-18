@@ -2172,9 +2172,9 @@ __webpack_require__.r(__webpack_exports__);
     };
   },
   methods: {
-    block: function block() {
+    unblock: function unblock() {
       var app = this;
-      axios.post('/friends/block', {
+      axios.post('/friends/unblock', {
         user_id: app.id_user
       });
     }
@@ -38094,7 +38094,7 @@ var render = function() {
     {
       staticClass: "btn btn-sm btn-outline-primary ",
       attrs: { type: "submit", name: "button" },
-      on: { click: _vm.block }
+      on: { click: _vm.unblock }
     },
     [_vm._v("Unblock")]
   )

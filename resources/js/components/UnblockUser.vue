@@ -1,5 +1,5 @@
 <template>
-  <button  class="btn btn-sm btn-outline-primary " type="submit" v-on:click="block" name="button">Unblock</button>
+  <button  class="btn btn-sm btn-outline-primary " type="submit" v-on:click="unblock" name="button">Unblock</button>
 </template>
 
 <script>
@@ -12,10 +12,10 @@ export default {
     }
   },
     methods:{
-      block: function(){
+      unblock: function(){
         var app=this
         axios.
-         post('/friends/block',{
+         post('/friends/unblock',{
            user_id: app.id_user
          })
       }

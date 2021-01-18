@@ -4,15 +4,17 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
+
 use App\Chat;
 use App\User;
 use Session;
 
 class ChatController extends Controller
 {
-  public function __construct(){
-    $this->middleware('auth');
-  }
+    public function __construct(){
+      $this->middleware('auth');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -46,6 +48,7 @@ class ChatController extends Controller
     {
         $this->validate($request,[
           'name'=>'required|min:3|max:255',
+          'type'=>'required',
           'description'=>'required|min:3|max:255',
           'rules'=>'required|min:3|max:255',
           'key'=>'required|min:4|max:20',
@@ -53,6 +56,7 @@ class ChatController extends Controller
 
         $chat=new Chat;
         $chat->name=$request->name;
+        $chat->type=$request->type;
         $chat->description=$request->description;
         $chat->rules=$request->rules;
         $chat->key=$request->key;
@@ -73,8 +77,16 @@ class ChatController extends Controller
     public function show($id)
     {
       $chat=Chat::find($id);
-      $users=User::all();
-       return view('chats.show')->with('chat',$chat)->with('users',$users);
+      // echo($chat->users);
+      // $users=User::all();
+      foreach($chat->users as $user){
+        if($user->id == Auth::id()){
+          return view('chats.show')->with('chat',$chat);#->with('users',$users);
+        }else{
+          abort(404);
+        }
+      }
+
     }
 
     /**
@@ -106,12 +118,14 @@ class ChatController extends Controller
     {
         $this->validate($request,[
           'name'=>'required|min:3|max:255',
+          'type'=>'required',
           'key'=>'required|min:4|max:20',
           'description'=>'required|min:3|max:255',
           'rules'=>'required|min:3|max:255',
         ]);
         $chat=Chat::find($id);
         $chat->name=$request->name;
+        $chat->type=$request->type;
         $chat->description=$request->description;
         $chat->rules=$request->rules;
         $chat->key=$request->key;

@@ -2,7 +2,8 @@
 @section('title','|Pending')
 @section('content')
   <h3 class="text-center">Pending friend requsets</h3>
-  <table class="table table-striped ">
+  <div class="container">
+  <table class="table table-sm table-striped ">
    <thead>
      <tr>
        <th>From</th><th>When</th><th>Acc/Blo</th>
@@ -24,4 +25,5 @@
      @endif
    </tbody>
   </table>
+  </div>
 @endsection

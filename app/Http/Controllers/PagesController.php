@@ -36,7 +36,7 @@ class PagesController extends Controller
   public function getSelf($handle){
     // dd($handle);
     $user=User::where('handle',$handle)->first();
-    // dd($user)
+    // dd($user->chat);
     return view('pages.self')->with('user',$user);
   }
 
@@ -61,7 +61,7 @@ class PagesController extends Controller
 
   public function blockedUserPage(){
     $blocked=Friendship::where('second_user',Auth::user()->id)->where('status','blocked')->get();
-
+    // dd($blocked);
     return view('requests.blocked')->with('blocked',$blocked);
   }
 

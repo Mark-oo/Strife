@@ -17,6 +17,7 @@ Route::group(['middleware'=>['web']],function(){
   Route::get('/search','SearchController@search');
   // Friends stuff
    // requests
+  Route::post('/friends/unblock','RequestController@unblock');
   Route::get('/requests/blocked','PagesController@blockedUserPage');
   Route::post('/friends/block','RequestController@block');
   Route::get('/requests/pending','PagesController@pendingFriendPage');

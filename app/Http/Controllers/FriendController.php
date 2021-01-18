@@ -10,6 +10,9 @@ use Illuminate\Support\Collection;
 
 class FriendController extends Controller
 {
+    public function __construct(){
+      $this->middleware('auth');
+    }
 
     public function getIndex(){
        // $friends=User::where('id','!=',Auth::user()->id)->get();

@@ -2,10 +2,11 @@
 @section('title','| Blocked')
   @section('content')
     <h3 class="text-center">Blocked friend requsets</h3>
-    <table class="table table-striped ">
+    <div class="container">
+    <table class="table table-sm table-striped ">
      <thead>
        <tr>
-         <th>Who</th><th>When</th><th>unbloc</th>
+         <th>Who</th><th>When</th><th>Unblock</th>
        </tr>
      </thead>
      <tbody>
@@ -24,4 +25,5 @@
        @endif
      </tbody>
     </table>
+  </div>
 @endsection
