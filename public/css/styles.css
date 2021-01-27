@@ -43,8 +43,27 @@
 .user-image{
   width: 50px;
   height: 50px;
+  border:1px solid black;
   border-radius: 50%;
   float: left;
+}
+.profile-image{
+  width: 150px;
+  height: 150px;
+  border:2px solid black;
+  border-radius: 50%;
+  position: absolute;
+}
+.possition{
+  width: 30px;
+  height: 30px;
+  background-color: white;
+  border:1px solid black;
+  border-radius: 50%;
+  margin-left:115px;
+  margin-top: 105px;
+  color: #ffffff;
+  position: absolute;
 }
 .message{
   margin-top: 20px;

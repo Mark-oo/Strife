@@ -1,11 +1,11 @@
 @extends('main_auth')
 @section('title','|Find Friends')
 @section('content')
-  <div class="">
-  <table class="table table-striped">
+  <div class="container">
+  <table class="table table-sm table-striped">
     <thead>
      <tr>
-       <th>name</th><th></th>
+       <th>name</th><th>Send request</th>
      </tr>
     </thead>
     <tbody>

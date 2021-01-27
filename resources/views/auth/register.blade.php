@@ -10,33 +10,33 @@
                 <div class="card-body">
                     {!!Form::open()!!}
 
-                        <div class="form-group row">
-                            <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Name') }}</label>
+                    <div class="form-group row">
+                 <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Name') }}</label>
 
-                            <div class="col-md-6">
-                                {{Form::text('name',null,['class'=>'form-control'])}}
+                 <div class="col-md-6">
+                     {{Form::text('name',null,['class'=>'form-control'])}}
 
-                                @error('name')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
+                     @error('name')
+                         <span class="invalid-feedback" role="alert">
+                             <strong>{{ $message }}</strong>
+                         </span>
+                     @enderror
+                 </div>
+             </div>
 
-                        <div class="form-group row">
-                            <label for="handle" class="col-md-4 col-form-label text-md-right">{{ __('Username') }}</label>
+             <div class="form-group row">
+                 <label for="handle" class="col-md-4 col-form-label text-md-right">{{ __('Handle') }}</label>
 
-                            <div class="col-md-6">
-                                {{Form::text('handle',null,['class'=>'form-control'])}}
+                 <div class="col-md-6">
+                     {{Form::text('handle',null,['class'=>'form-control'])}}
 
-                                @error('handle')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
+                     @error('handle')
+                         <span class="invalid-feedback" role="alert">
+                             <strong>{{ $message }}</strong>
+                         </span>
+                     @enderror
+                 </div>
+             </div>
 
                         <div class="form-group row">
                             <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>

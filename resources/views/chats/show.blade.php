@@ -64,6 +64,10 @@
 <div> --}}
 <div class="container">
   <div class="text-center">
+    @foreach ($chat->users as $user)
+      <img class="user-image" src="/css/images/big/{{$user->filename}}">
+    @endforeach
+
     <h2><a href="{{route('chats.edit',$chat->id)}}" >{{$chat->name}}</a></h2>
   </div>
 <div class="col-md-8 offset-2">

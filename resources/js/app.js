@@ -36,4 +36,10 @@ Vue.component('unblock-user', require('./components/UnblockUser.vue').default);
 
 const app = new Vue({
     el: '#app',
+    data(){
+      return{
+        message:"Edit Image"
+      }
+    }
+
 });

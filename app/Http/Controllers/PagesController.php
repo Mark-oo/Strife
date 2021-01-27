@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use App\Chat;
 use App\User;
 use App\Friendship;
+use Image;
 
 class PagesController extends Controller
 {
@@ -33,12 +34,6 @@ class PagesController extends Controller
      return view('pages.single')->with('chat',$chat)->with('users',$users);
   }
 
-  public function getSelf($handle){
-    // dd($handle);
-    $user=User::where('handle',$handle)->first();
-    // dd($user->chat);
-    return view('pages.self')->with('user',$user);
-  }
 
   public function findFriendsPage(){
     $not_friends = User::where('id', '!=', Auth::user()->id);

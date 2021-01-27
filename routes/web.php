@@ -13,6 +13,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 Route::group(['middleware'=>['web']],function(){
+  // User
+  Route::put('/profile/{handle}','UserController@update')->name('user.update');
+  Route::get('/profile/{hanlde}/edit','UserController@edit')->name('user.edit');
   // search
   Route::get('/search','SearchController@search');
   // Friends stuff
@@ -41,7 +44,7 @@ Route::group(['middleware'=>['web']],function(){
   Route::post('/login','Auth\LoginController@login');
   Route::get('/login','Auth\LoginController@showLoginForm');
   // main page
-  Route::get('/profile/{hadnle}','PagesController@getSelf')->name('pages.self');
+  Route::get('/profile/{hadnle}','UserController@getSelf')->name('users.self');
   Route::get('/',['uses'=>'PagesController@getWelcomePage','as'=>'pages.welcome']);
   Route::get('/@me',['uses'=>'PagesController@getIndexPage','as'=>'pages.index']);
 

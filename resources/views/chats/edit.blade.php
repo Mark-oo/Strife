@@ -12,6 +12,12 @@
       {{Form::model($chat,['route'=>['chats.update',$chat->id],'method'=>'PUT'])}}
       {{Form::label('name','Name:')}}
       {{Form::text('name',null,['class'=>'form-control'])}}
+
+      {{Form::label('type',"Type")}}
+      <select class="form-control js-example-basic-single" name="type">
+        <option value="private">private</option>
+        <option value="public">public</option>
+      </select>
       {{Form::label('key','Key:')}}
       {{Form::text('key',null,['class'=>'form-control'])}}
       {{Form::label('description','Description:')}}
@@ -20,7 +26,7 @@
       {{Form::textarea('rules',null,['class'=>'form-control','rows'=>"4", 'cols'=>"50"])}}
       {{Form::label('users','Invite:')}}
       {{Form::select('users[]',$users,null,['class'=>'form-control js-example-basic-multiple',
-                                        'multiple'=>'multiple'
+                                            'multiple'=>'multiple'
                                        ])
       }}
 

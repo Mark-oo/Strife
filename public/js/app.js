@@ -50308,7 +50308,12 @@ Vue.component('unblock-user', __webpack_require__(/*! ./components/UnblockUser.v
  */
 
 var app = new Vue({
-  el: '#app'
+  el: '#app',
+  data: function data() {
+    return {
+      message: "Edit Image"
+    };
+  }
 });
 
 /***/ }),
