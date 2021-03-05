@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
+use   Illuminate\Pagination\Paginator;
 
 use Illuminate\Http\Request;
 use App\Chat;
@@ -21,12 +22,11 @@ class PagesController extends Controller
   }
 
   public function getIndexPage(){
-
     $user=User::where('id',Auth::id())->first();
-
-    return view('pages.index')->with('user',$user);
+    $pop_chats=Chat::where('type','public')->orderBy('user_count','desc')->paginate(5);#dd($pop_chats);
+    return view('pages.index')->with('user',$user)->with('pop_chats',$pop_chats);
   }
-
+  // OVA FUNKCIJA JE DUPLIKAT IMA U ChatControleru
   public function getChat($id){
 
     $chat=DB::table('chats')->where('id','=',$id)->get();

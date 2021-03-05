@@ -1,5 +1,5 @@
 <template>
-<button class="btn btn-md btn-outline-primary" v-on:click="send" type="submit">Send Request</button>
+<button v-bind:disabled="btnProperty" class="btn btn-md btn-outline-primary" v-on:click="send" type="submit">Send Request</button>
 </template>
 
 <script>
@@ -7,6 +7,7 @@
       props:['user-one','user-two'],
        data(){
          return{
+           btnProperty:false,
            firstUser:this.userOne,
            secondUser:this.userTwo,
          }
@@ -19,6 +20,7 @@
              userOne:app.firstUser,
              userTwo:app.secondUser
            })
+           app.btnProperty=true;
          }
        }
     }

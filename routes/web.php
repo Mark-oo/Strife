@@ -13,6 +13,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 Route::group(['middleware'=>['web']],function(){
+  //fidn chat
+  Route::post('/chats/find','ChatController@findChat');
   // User
   Route::put('/profile/{handle}','UserController@update')->name('user.update');
   Route::get('/profile/{hanlde}/edit','UserController@edit')->name('user.edit');

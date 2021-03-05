@@ -24,6 +24,7 @@ class ChatController extends Controller
 
       $chat=DB::table('chats')->where('key','=',$key)->get();
       $users=User::all();
+
        return view('chats.single')->with('chat',$chat)->with('users',$users);
     }
 
@@ -60,6 +61,7 @@ class ChatController extends Controller
         $chat->description=$request->description;
         $chat->rules=$request->rules;
         $chat->key=$request->key;
+        $chat->user_count=count($request->users);
 
         $chat->save();
         $chat->users()->sync($request->users,false);
@@ -116,6 +118,7 @@ class ChatController extends Controller
      */
     public function update(Request $request, $id)
     {
+        // dd($request)
         $this->validate($request,[
           'name'=>'required|min:3|max:255',
           'type'=>'required',
@@ -129,9 +132,10 @@ class ChatController extends Controller
         $chat->description=$request->description;
         $chat->rules=$request->rules;
         $chat->key=$request->key;
+        $chat->user_count=count($request->users);
 
         $chat->save();
-        $chat->users()->sync($request->users,false);
+        $chat->users()->sync($request->users);
 
         Session::flash('success','Wuhuuuuu');
         return redirect()->route('chats.show',$chat->id);
@@ -151,5 +155,14 @@ class ChatController extends Controller
 
         Session::flash('success','Nooooooo');
         return redirect()->route('pages.index');
+    }
+
+    public function findChat(Request $request){
+      $result=Chat::where('type','public')->where('name',$request->search)->first();
+      // if(empty($result)){
+      //   $result="govno";
+      //   return response()->json($result);
+      // }
+      return response()->json($result);
     }
 }
