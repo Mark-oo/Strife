@@ -5,9 +5,10 @@
 <script>
     export default {
       props:['user-one','user-two'],
-       data(){
+      data(){
          return{
            btnProperty:false,
+           btnStyle:something,
            btnText:"Send Request",
            firstUser:this.userOne,
            secondUser:this.userTwo,
