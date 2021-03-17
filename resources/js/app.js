@@ -27,6 +27,7 @@ Vue.component('block-user', require('./components/BlockUser.vue').default);
 Vue.component('find-chat', require('./components/FindChat.vue').default);
 Vue.component('send-request', require('./components/SendRequest.vue').default);
 Vue.component('unblock-user', require('./components/UnblockUser.vue').default);
+Vue.component('dark-mode', require('./components/DarkMode.vue').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to

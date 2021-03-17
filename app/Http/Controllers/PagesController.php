@@ -44,6 +44,8 @@ class PagesController extends Controller
     }
     // dd($not_friends);
     $not_friends = $not_friends->get();
+    // ovo me mrzi da radim da uvek rando lude ti izbaci
+    // $random=$not_friends->random()->all();dd($random);
     return view('friends.find')->with('not_friends',$not_friends);
   }
 

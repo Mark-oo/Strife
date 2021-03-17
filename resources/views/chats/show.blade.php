@@ -67,8 +67,9 @@
     @foreach ($chat->users as $user)
       <a href="{{ $user->id == Auth::id() ? url('/profile/'.$user->handle) : url('/friends/show/'.$user->handle)}}"><img class="user-image" src="/css/images/big/{{$user->filename}}"></a>
     @endforeach
-
     <h2><a href="{{route('chats.edit',$chat->id)}}" >{{$chat->name}}</a></h2>
+    <dark-mode></dark-mode>
+  <hr>
   </div>
 <div class="col-md-8 offset-2">
   @foreach($chat->messages as $message)

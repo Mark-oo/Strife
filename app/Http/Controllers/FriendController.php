@@ -25,6 +25,7 @@ class FriendController extends Controller
        }
        // dd($not_friends);
        $not_friends = $not_friends->get();
+       // dd($not_friends);
        return view('friends.index')->with('not_friends',$not_friends);
     }
 

@@ -17,7 +17,7 @@
   <tbody>
     @foreach($user->friends as $friend)
     <tr>
-      <td><a href="{{route('friends.show',$friend->handle)}}">{{$friend->handle}}<a></td>
+      <td></td><td><a href="{{route('friends.show',$friend->handle)}}">{{$friend->handle}}<a></td>
 
     </tr>
   @endforeach

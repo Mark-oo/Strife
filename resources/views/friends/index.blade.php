@@ -7,8 +7,9 @@
     <div class="col">
     <p>Your Friends</p>
         <show-friend friends="{{ json_encode(Auth::user()->friends) }}"></show-friend>
+        {{-- TODO:mora ovo ispocetka mislim zato sto ovako prikazuje i pennding frienshipe a to je no gud --}}
     </div>
-    <div  class="col">
+    {{-- <div  class="col">
       <p>Add Friends</p>
       <search></search>
       <table class="table table-striped" style="width:100%;">
@@ -28,7 +29,7 @@
           @endforeach
         </tbody>
     </table>
-    </div>
+    </div> --}}
   </div>
 </div>
 {{-- <script src="{{asset('js/app.js')}}"></script> --}}

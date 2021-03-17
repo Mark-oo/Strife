@@ -1,5 +1,5 @@
 <template>
-<button v-bind:disabled="btnProperty" class="btn btn-md btn-outline-primary" v-on:click="send" type="submit">Send Request</button>
+<button v-bind:disabled="btnProperty" class="btn btn-sm btn-outline-secondary" v-on:click="send" type="submit">{{btnText}}</button>
 </template>
 
 <script>
@@ -8,6 +8,7 @@
        data(){
          return{
            btnProperty:false,
+           btnText:"Send Request",
            firstUser:this.userOne,
            secondUser:this.userTwo,
          }
@@ -21,6 +22,8 @@
              userTwo:app.secondUser
            })
            app.btnProperty=true;
+           app.btnText="Sent";
+           //TODO: ovo za btnText ne radi kak0 valja na rifresh vraca staro mora drugacije
          }
        }
     }

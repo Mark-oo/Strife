@@ -2,8 +2,7 @@
 @section('title',"| $friend->handle")
 @section('content')
 <div class="container">
-
-  <div class="text-center"><h3>{{$friend->handle}}</h3></div>
+    <div class="text-center"><h3>{{$friend->handle}}</h3><send-request data-toggle="button" user-one="{{Auth::id()}}" user-two="{{$friend->id}}"></send-request></div>
   <div class="row">
     <div class="col">
     <table class="table table-bordered">

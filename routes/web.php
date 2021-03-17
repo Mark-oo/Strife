@@ -31,7 +31,7 @@ Route::group(['middleware'=>['web']],function(){
   Route::post('/friends/add','RequestController@add');
 
 
-  Route::get('/friends/show/{handle}',['uses'=>'FriendController@getFriendShow','as'=>'friends.show']);
+  Route::get('/users/show/{handle}',['uses'=>'FriendController@getFriendShow','as'=>'friends.show']);
   Route::post('/friends/d','FriendController@delete');
   Route::get('/friends', 'FriendController@getIndex')->name('friends.index');
 
@@ -51,3 +51,4 @@ Route::group(['middleware'=>['web']],function(){
   Route::get('/@me',['uses'=>'PagesController@getIndexPage','as'=>'pages.index']);
 
 });
+// Route::get('/search','SearchController@search');
